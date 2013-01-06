@@ -1,0 +1,7 @@
+dupes is a small tool that finds potential duplicate files in a directory.
+It considers two files duplicates of each other when they have the same size
+and their contents have the same SHA-1 sum.
+
+To compile, you need a Go compiler. Once you have that, run
+
+    go build

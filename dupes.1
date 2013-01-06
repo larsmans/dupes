@@ -1,0 +1,42 @@
+.TH DUPS "1" "January 7, 2013" "" "User Commands"
+.SH NAME
+dupes \- find duplicate files
+.SH SYNOPSIS
+.B dupes
+[\fB-pairs\fP]
+[\fB-quiet\fP]
+[\fIroot\fP]
+.SH DESCRIPTION
+.LP
+Dups finds duplicate files in the directory
+.I root
+(or the current directory if not specified)
+by looking at their size and the SHA1 of their contents.
+.SH OPTIONS
+.TP
+.BR -pairs [= true | false ]
+If
+.BR true ,
+report pairs of potential duplicate files;
+when any group of
+.I n
+files are potential duplicates of each other,
+this prints (\fIn\fP*(\fIn\fP-1))/2 pairs of files for that group.
+When
+.B false
+(the default), each group is reported on a line of its own.
+.TP
+.BR -quiet [= true | false ]
+Whether to report error messages, except for fatal errors.
+Default
+.BR true .
+.SH BUGS
+Can't handle more than one directory at a time.
+.LP
+Could do parallel processing of files, but currently doesn't.
+.SH "SEE ALSO"
+.BR cmp (1),
+.BR sha1 (1),
+.BR sha1sum (1)
+.SH AUTHOR
+Lars Buitinck.
