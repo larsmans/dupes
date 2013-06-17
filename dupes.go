@@ -112,7 +112,8 @@ func hashFile(path string, size int64) (h string, err error) {
 func walk(root string, paths chan<- pathInfo) (exitcode int) {
     visit := func(path string, info os.FileInfo, err error) error {
         if err == nil {
-            if regular := info.Mode() & os.ModeType == 0; regular {
+            if info.Mode() & os.ModeType == 0 {
+                // regular file
                 paths <- pathInfo{path, info.Size()}
             }
         } else {
