@@ -3,7 +3,6 @@
 dupes \- find duplicate files
 .SH SYNOPSIS
 .B dupes
-[\fB-pairs\fP]
 [\fB-quiet\fP]
 [\fIroot\fP]
 .SH DESCRIPTION
@@ -13,18 +12,6 @@ Dups finds duplicate files in the directory
 (or the current directory if not specified)
 by looking at their size and the SHA1 of their contents.
 .SH OPTIONS
-.TP
-.BR -pairs [= true | false ]
-If
-.BR true ,
-report pairs of potential duplicate files;
-when any group of
-.I n
-files are potential duplicates of each other,
-this prints (\fIn\fP*(\fIn\fP-1))/2 pairs of files for that group.
-When
-.B false
-(the default), each group is reported on a line of its own.
 .TP
 .BR -quiet [= true | false ]
 Whether to report error messages, except for fatal errors.

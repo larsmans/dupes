@@ -31,11 +31,9 @@ type pathInfo struct {
 var errors chan error
 
 func main() {
-    var pairs, quiet bool
+    var quiet bool
     var root string
 
-    flag.BoolVar(&pairs, "pairs", false,
-                 "print duplicate files' pathnames in pairs")
     flag.BoolVar(&quiet, "quiet", false,
                  "no error messages during the tree walk")
     flag.Parse()
@@ -71,23 +69,11 @@ func main() {
 
     for _, paths := range byhash {
         if len(paths) > 1 {
-            if pairs {
-                printpairs(paths)
-            } else {
-                fmt.Println(strings.Join(paths, " "))
-            }
+            fmt.Println(strings.Join(paths, " "))
         }
     }
 
     os.Exit(exitcode)
-}
-
-func printpairs(paths []string) {
-    for i, p := range paths {
-        for _, q := range paths[i+1:] {
-            fmt.Println(p, q)
-        }
-    }
 }
 
 // Hash what comes out of paths and store it in byhash.
