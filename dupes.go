@@ -92,10 +92,10 @@ func hash(paths <-chan pathInfo, byhash map[string][]string,
 
 func hashFile(path string, size int64) (h string, err error) {
     f, err := os.Open(path)
-    defer f.Close()
     if err != nil {
         return
     }
+    defer f.Close()
 
     sha := sha1.New()
     binary.Write(sha, binary.BigEndian, size)
